@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "target": "landline",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*"
+    ]
+  }
+}

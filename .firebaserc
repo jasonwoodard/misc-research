@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "jw-hosting"
+  },
+  "targets": {
+    "jw-hosting": {
+      "hosting": {
+        "landline": [
+          "jasonwoodardresearch"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

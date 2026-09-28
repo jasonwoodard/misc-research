@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Line Bulletin No. 4 — Three Ways to Give a Kid a Phone</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --paper: #FAFAF7; --panel: #EFEEE8; --ink: #14181C;
+    --teal: #00A19A; --orange: #F2703A; --gold: #E8AA2E; --line: #D9D6CC; --muted: #7B776B;
+    --font-display: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    --font-mono: 'Space Mono', 'Courier New', monospace;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { background: #DDDAD0; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); color: var(--ink); }
+  .sheet { background: var(--paper); width: 8.5in; max-width: 100%; margin: 20px auto; padding: 0.25in; }
+  @media print {
+    html, body { background: var(--paper); }
+    .sheet { box-shadow: none; width: auto; max-width: none; margin: 0; padding: 0.25in; }
+    .no-print { display: none !important; }
+    section { break-inside: avoid; }
+    table { break-inside: avoid; }
+  }
+  .print-bar { max-width: 8.5in; margin: 14px auto 0; text-align: center; }
+  .print-bar button {
+    font-family: var(--font-display); font-weight: 600; font-size: 12px; background: var(--ink); color: var(--paper);
+    border: none; padding: 9px 18px; cursor: pointer; letter-spacing: 0.04em;
+  }
+  header.masthead { border-bottom: 4px solid var(--ink); padding: 0 0 12px; display: flex; justify-content: space-between; align-items: center; }
+  .masthead-kicker { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); line-height: 1.6; }
+  .masthead-kicker .no { color: var(--teal); }
+  .masthead-right { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); text-align: right; line-height: 1.6; }
+  .title-block { padding: 22px 0 20px; border-bottom: 4px solid var(--teal); }
+  .title-block h1 { font-family: var(--font-display); font-weight: 700; font-size: 36px; margin: 0 0 10px; letter-spacing: -0.01em; line-height: 1.05; }
+  .title-block p { font-size: 14px; line-height: 1.55; max-width: 6.1in; margin: 0; color: #33383D; }
+  section { margin-top: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .sec-num { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--paper); background: var(--ink); width: 26px; height: 26px; line-height: 26px; text-align: center; flex-shrink: 0; }
+  .sec-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin: 0; }
+  .sec-head span.tag { font-family: var(--font-mono); font-size: 9.5px; color: var(--muted); text-transform: uppercase; margin-left: auto; }
+  .sec-rule { height: 2px; background: var(--ink); margin: 6px 0 12px; }
+  p.lede { font-size: 13px; line-height: 1.55; max-width: 6.4in; margin: 0 0 10px; }
+  .takeaway { font-family: var(--font-display); font-weight: 700; font-size: 14px; margin: 0 0 12px; }
+  table.compare, table.parts, table.truth { width: 100%; border-collapse: collapse; font-size: 11.3px; }
+  table.compare th, table.compare td, table.parts th, table.parts td, table.truth th, table.truth td {
+    padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top;
+  }
+  table.compare th, table.parts th, table.truth th {
+    font-family: var(--font-display); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.02em;
+    color: var(--ink); border-bottom: 2px solid var(--ink); text-align: left;
+  }
+  table.compare th.col { text-align: center; border-top: 4px solid var(--line); }
+  table.compare th.col-teal { border-top-color: var(--teal); }
+  table.compare th.col-orange { border-top-color: var(--orange); }
+  table.compare th.col-gold { border-top-color: var(--gold); }
+  table.compare td:first-child { font-weight: 600; }
+  table.compare td.val { text-align: center; font-family: var(--font-mono); font-size: 11px; }
+  table.compare tr.money td.val { color: var(--ink); font-weight: 700; }
+  table.truth td.val, table.truth th.col { text-align: center; }
+  table.truth td.val { font-family: var(--font-mono); font-size: 11px; }
+  .foot-notes { font-size: 9.3px; color: var(--muted); line-height: 1.6; margin-top: 8px; }
+  table.parts td.cost, table.parts th.cost { font-family: var(--font-mono); white-space: nowrap; text-align: right; }
+  table.parts tr.total td { border-top: 2px solid var(--ink); border-bottom: none; font-weight: 700; padding-top: 9px; }
+  table.parts tr.total td.cost { color: var(--teal); }
+  .chart-wrap { text-align: center; margin-bottom: 12px; }
+  ul.facts { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.7; }
+  ul.facts b { color: var(--ink); }
+  footer { margin-top: 22px; padding-top: 10px; border-top: 2px solid var(--ink); font-family: var(--font-mono); font-size: 9px; color: var(--muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="print-bar no-print"><button onclick="window.print()">Print / Save as PDF</button></div>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead-kicker">HOME LINE BULLETIN<br><span class="no">NO. 4</span></div>
+    <svg width="46" height="46" viewBox="0 0 46 46">
+      <circle cx="23" cy="23" r="7" fill="#14181C"/>
+      <ellipse cx="23" cy="23" rx="21" ry="8" fill="none" stroke="#00A19A" stroke-width="2"/>
+      <ellipse cx="23" cy="23" rx="8" ry="21" fill="none" stroke="#F2703A" stroke-width="2"/>
+      <circle cx="44" cy="23" r="2.6" fill="#00A19A"/>
+      <circle cx="23" cy="2" r="2.6" fill="#F2703A"/>
+    </svg>
+    <div class="masthead-right">ISSUED SEPT 2026<br>FOR DISTRIBUTION</div>
+  </header>
+
+  <div class="title-block">
+    <h1>Three Ways to Give a Kid a Phone</h1>
+    <p>A phone your kid can use to call the people you've approved — and no one else. Compared on what matters: features, real monthly cost, and how each one actually works.</p>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">1</span><h2>At a Glance</h2></div>
+    <div class="sec-rule"></div>
+    <table class="compare">
+      <tr><th>&nbsp;</th><th class="col col-orange">Tin Can + Party Line</th><th class="col col-orange">Tin Can, Can2Can only</th><th class="col col-gold">MyPhone by Ooma</th><th class="col col-teal">Build it yourself</th></tr>
+      <tr class="money"><td>Cost to start</td><td class="val">$100</td><td class="val">$100</td><td class="val">$108.86</td><td class="val">~$199</td></tr>
+      <tr class="money"><td>Real monthly cost, est.</td><td class="val">$9.99*</td><td class="val">$0</td><td class="val">~$13-14</td><td class="val">~$4-6</td></tr>
+      <tr class="money"><td>12-month total</td><td class="val">~$210</td><td class="val">$100</td><td class="val">~$277</td><td class="val">~$271</td></tr>
+    </table>
+    <div class="foot-notes">*Party Line is optional — required only to reach numbers outside the Tin Can network. Can2Can calling is free regardless of subscription status. No itemized monthly tax/fee found anywhere in Tin Can's own materials for Party Line — treated at face value.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">2</span><h2>Features, In Detail</h2><span class="tag">confirmed where possible</span></div>
+    <div class="sec-rule"></div>
+    <p class="lede">All three block unapproved numbers by default. They differ in what else is built in, and what reaching an outside number costs.</p>
+    <table class="compare">
+      <tr><th>&nbsp;</th><th class="col col-orange">Tin Can</th><th class="col col-gold">MyPhone by Ooma</th><th class="col col-teal">Build it yourself</th></tr>
+      <tr><td>Screen on the phone</td><td class="val">No</td><td class="val">No</td><td class="val">Depends on phone (Cortelco 2500: none)</td></tr>
+      <tr><td>Dialing input</td><td class="val">Keypad + 10 speed-dial slots</td><td class="val">Standard keypad</td><td class="val">Standard keypad (varies by phone)</td></tr>
+      <tr><td>Gets a real phone number</td><td class="val">Yes, even on the free tier†</td><td class="val">Yes</td><td class="val">Yes</td></tr>
+      <tr><td>Reaches outside numbers</td><td class="val">Only with optional Party Line subscription</td><td class="val">Yes, included</td><td class="val">Yes, included</td></tr>
+      <tr><td>Whitelist mechanism</td><td class="val">Hard block, app-managed</td><td class="val">Hard block‡</td><td class="val">Hard block (Enf860 hardware)</td></tr>
+      <tr><td>Quiet Hours / Quiet Time</td><td class="val">Yes ("Quiet Time")</td><td class="val">Yes ("Scheduled Quiet Hours")</td><td class="val">Not built in</td></tr>
+      <tr><td>Voicemail</td><td class="val">Not confirmed§</td><td class="val">Yes, on base station</td><td class="val">Not built in</td></tr>
+      <tr><td>Call log for parents</td><td class="val">Yes, in-app</td><td class="val">Yes, online portal</td><td class="val">Not built in</td></tr>
+      <tr><td>911</td><td class="val">Yes, address-based, toggleable</td><td class="val">Yes, address-based + text/email alerts</td><td class="val">Yes, address-based (Ooma standard)</td></tr>
+      <tr><td>Contract required</td><td class="val">No</td><td class="val">No</td><td class="val">No</td></tr>
+    </table>
+    <div class="foot-notes">
+      † Per hands-on reviews, a Tin Can is assigned a traditional-looking number at setup, before any subscription is active — see Section 4.<br>
+      ‡ Described as a true block in Ooma's documentation — verify in hand once set up.<br>
+      § Not stated in any source found — treat as unknown, not as "no."
+    </div>
+  </section>
+
+  <section style="break-before: page;">
+    <div class="sec-head"><span class="sec-num">3</span><h2>The Cost Curve</h2></div>
+    <div class="sec-rule"></div>
+    <p class="takeaway">Tin Can is cheapest through month 27. Build-it-yourself is cheapest after.</p>
+    <div class="chart-wrap">
+        <svg viewBox="0 0 700 340" width="100%" style="max-width:600px;">
+          <g stroke="#D9D6CC" stroke-width="1">
+            <line x1="60" y1="310" x2="640" y2="310"/><line x1="60" y1="240" x2="640" y2="240"/>
+            <line x1="60" y1="170" x2="640" y2="170"/><line x1="60" y1="100" x2="640" y2="100"/><line x1="60" y1="30" x2="640" y2="30"/>
+          </g>
+          <g font-family="Space Mono, monospace" font-size="10.5" fill="#7B776B" text-anchor="end">
+            <text x="52" y="313">$0</text><text x="52" y="243">$250</text><text x="52" y="173">$500</text><text x="52" y="103">$750</text><text x="52" y="33">$1000</text>
+          </g>
+          <g font-family="Space Mono, monospace" font-size="10.5" fill="#7B776B" text-anchor="middle">
+            <text x="60" y="328">Start</text><text x="176" y="328">Yr 1</text><text x="292" y="328">Yr 2</text><text x="408" y="328">Yr 3</text><text x="524" y="328">Yr 4</text><text x="640" y="328">Yr 5</text>
+          </g>
+          <line x1="60" y1="254.3" x2="640" y2="153.5" stroke="#00A19A" stroke-width="3.5"/>
+          <line x1="60" y1="282" x2="640" y2="117" stroke="#F2703A" stroke-width="3.5" stroke-dasharray="7,5"/>
+          <line x1="60" y1="282" x2="640" y2="282" stroke="#F2703A" stroke-width="2.5" stroke-dasharray="2,3"/>
+          <line x1="60" y1="279.5" x2="640" y2="44.3" stroke="#E8AA2E" stroke-width="3.5" stroke-dasharray="2,4"/>
+          <circle cx="170" cy="235" r="4.5" fill="#14181C"/>
+          <line x1="170" y1="235" x2="140" y2="210" stroke="#14181C" stroke-width="1"/>
+          <text x="30" y="206" font-family="Space Mono, monospace" font-size="10.5" fill="#14181C">Mo 11: DIY &lt; MyPhone</text>
+          <circle cx="324" cy="208" r="4.5" fill="#14181C"/>
+          <line x1="324" y1="208" x2="350" y2="180" stroke="#14181C" stroke-width="1"/>
+          <text x="354" y="177" font-family="Space Mono, monospace" font-size="10.5" fill="#14181C">Mo 27: DIY &lt; Tin Can</text>
+          <g font-family="Inter, sans-serif" font-size="11">
+            <line x1="440" y1="222" x2="466" y2="222" stroke="#00A19A" stroke-width="3.5"/><text x="472" y="226" fill="#14181C">Build it yourself</text>
+            <line x1="440" y1="236" x2="466" y2="236" stroke="#F2703A" stroke-width="3.5" stroke-dasharray="7,5"/><text x="472" y="240" fill="#14181C">Tin Can + Party Line</text>
+            <line x1="440" y1="250" x2="466" y2="250" stroke="#F2703A" stroke-width="2.5" stroke-dasharray="2,3"/><text x="472" y="254" fill="#14181C">Tin Can, Can2Can only</text>
+            <line x1="440" y1="264" x2="466" y2="264" stroke="#E8AA2E" stroke-width="3.5" stroke-dasharray="2,4"/><text x="472" y="268" fill="#14181C">MyPhone by Ooma</text>
+          </g>
+        </svg>
+      </div>
+      <ul class="facts">
+        <li>Year 1 total: Tin Can + Party Line <b>$210</b>. Build it yourself <b>$271</b>. MyPhone <b>$277</b>.</li>
+        <li>Tin Can, no subscription: <b>$100 total, forever</b> — cheapest of all four, Can2Can calling only.</li>
+        <li>Month 11: build-it-yourself total cost drops below MyPhone's.</li>
+        <li>Month 27: build-it-yourself total cost drops below Tin Can + Party Line's.</li>
+        <li>Tin Can + Party Line vs. MyPhone: no crossover. Tin Can is cheaper at every month.</li>
+      </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">4</span><h2>Can2Can Mechanics</h2></div>
+    <div class="sec-rule"></div>
+    <p class="takeaway">A build-it-yourself or MyPhone line cannot reach a Tin Can with no subscription — and can't be reached by one either.</p>
+    <p class="lede">Every Tin Can is assigned a real phone number at setup, free tier included. The number existing isn't restricted — the routing is.</p>
+    <table class="truth">
+      <tr><th>Caller</th><th>Callee</th><th class="col">Connects?</th><th>Network path</th><th>Cost</th></tr>
+      <tr><td>Tin Can, any tier</td><td>Tin Can, mutually approved</td><td class="val">Yes</td><td>Private, Tin Can only</td><td>$0</td></tr>
+      <tr><td>Tin Can, free tier</td><td>Any outside number</td><td class="val">No</td><td>—</td><td>—</td></tr>
+      <tr><td>Any outside number</td><td>Tin Can, free tier</td><td class="val">No</td><td>—</td><td>—</td></tr>
+      <tr><td>Tin Can, Party Line</td><td>Any outside number</td><td class="val">Yes, if approved</td><td>Public phone network</td><td>Covered by $9.99/mo</td></tr>
+      <tr><td>Any outside number</td><td>Tin Can, Party Line</td><td class="val">Yes, if approved</td><td>Public phone network</td><td>Covered by $9.99/mo</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">5</span><h2>Build It Yourself — The Parts</h2></div>
+    <div class="sec-rule"></div>
+    <table class="parts">
+      <tr><th>Part</th><th>What it does</th><th class="cost">Cost</th></tr>
+      <tr><td>VoIP box (Ooma Telo, Basic subscription)</td><td>Turns your home internet into a real, dialable phone number</td><td class="cost">$100 one-time</td></tr>
+      <tr><td>Call blocker (Enf860, Family/whitelist mode)</td><td>Sits in line and silently blocks every number except the ones you approve</td><td class="cost">~$79 one-time</td></tr>
+      <tr><td>Any corded phone</td><td>The handset. A basic $20 model works exactly as well as an expensive one here</td><td class="cost">$20 and up</td></tr>
+      <tr class="total"><td>Total, budget build</td><td>Plus taxes/fees on the VoIP line — no subscription fee</td><td class="cost">~$199 + ~$4-6/mo</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    PRICES OBSERVED SEPTEMBER 2026 — CHECK CURRENT LISTINGS BEFORE BUYING. NOT AFFILIATED WITH ANY DEVICE OR SERVICE NAMED ABOVE. BUILT BY A PARENT, FOR PARENTS, TO SHARE FREELY.
+  </footer>
+
+</div>
+</body>
+</html>
