@@ -23,8 +23,22 @@
     html, body { background: var(--paper); }
     .sheet { box-shadow: none; width: auto; max-width: none; margin: 0; padding: 0.25in; }
     .no-print { display: none !important; }
-    section { break-inside: avoid; }
+    /* Let a section flow across a page if it must — the old blanket
+       "never split a section" rule was what caused whole sections to
+       jump to a fresh page and leave the one before it mostly blank.
+       Instead we glue only the parts that actually look bad split:
+       a heading orphaned at the bottom of a page, or a table row cut
+       in half. */
+    .sec-head { break-after: avoid; break-inside: avoid; }
+    .sec-rule { break-before: avoid; break-after: avoid; }
     table { break-inside: avoid; }
+    tr { break-inside: avoid; }
+    .chart-wrap { break-inside: avoid; }
+    /* The one long table (Section 2) is allowed to split at a row
+       boundary, with its header repeating on the continued page,
+       rather than jumping whole to the next page. */
+    #features-table { break-inside: auto; }
+    #features-table thead { display: table-header-group; }
   }
   .print-bar { max-width: 8.5in; margin: 14px auto 0; text-align: center; }
   .print-bar button {
@@ -38,17 +52,17 @@
   .title-block { padding: 22px 0 20px; border-bottom: 4px solid var(--teal); }
   .title-block h1 { font-family: var(--font-display); font-weight: 700; font-size: 36px; margin: 0 0 10px; letter-spacing: -0.01em; line-height: 1.05; }
   .title-block p { font-size: 14px; line-height: 1.55; max-width: 6.1in; margin: 0; color: #33383D; }
-  section { margin-top: 26px; }
+  section { margin-top: 19px; }
   .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
   .sec-num { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--paper); background: var(--ink); width: 26px; height: 26px; line-height: 26px; text-align: center; flex-shrink: 0; }
   .sec-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin: 0; }
   .sec-head span.tag { font-family: var(--font-mono); font-size: 9.5px; color: var(--muted); text-transform: uppercase; margin-left: auto; }
-  .sec-rule { height: 2px; background: var(--ink); margin: 6px 0 12px; }
+  .sec-rule { height: 2px; background: var(--ink); margin: 6px 0 9px; }
   p.lede { font-size: 13px; line-height: 1.55; max-width: 6.4in; margin: 0 0 10px; }
-  .takeaway { font-family: var(--font-display); font-weight: 700; font-size: 14px; margin: 0 0 12px; }
+  .takeaway { font-family: var(--font-display); font-weight: 700; font-size: 14px; margin: 0 0 8px; }
   table.compare, table.parts, table.truth { width: 100%; border-collapse: collapse; font-size: 11.3px; }
   table.compare th, table.compare td, table.parts th, table.parts td, table.truth th, table.truth td {
-    padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top;
+    padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top;
   }
   table.compare th, table.parts th, table.truth th {
     font-family: var(--font-display); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.02em;
@@ -67,10 +81,10 @@
   table.parts td.cost, table.parts th.cost { font-family: var(--font-mono); white-space: nowrap; text-align: right; }
   table.parts tr.total td { border-top: 2px solid var(--ink); border-bottom: none; font-weight: 700; padding-top: 9px; }
   table.parts tr.total td.cost { color: var(--teal); }
-  .chart-wrap { text-align: center; margin-bottom: 12px; }
-  ul.facts { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.7; }
+  .chart-wrap { text-align: center; margin-bottom: 8px; }
+  ul.facts { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.55; }
   ul.facts b { color: var(--ink); }
-  footer { margin-top: 22px; padding-top: 10px; border-top: 2px solid var(--ink); font-family: var(--font-mono); font-size: 9px; color: var(--muted); line-height: 1.6; }
+  footer { margin-top: 12px; padding-top: 6px; border-top: 2px solid var(--ink); font-family: var(--font-mono); font-size: 9px; color: var(--muted); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -110,8 +124,11 @@
     <div class="sec-head"><span class="sec-num">2</span><h2>Features, In Detail</h2><span class="tag">confirmed where possible</span></div>
     <div class="sec-rule"></div>
     <p class="lede">All three block unapproved numbers by default. They differ in what else is built in, and what reaching an outside number costs.</p>
-    <table class="compare">
+    <table class="compare" id="features-table">
+      <thead>
       <tr><th>&nbsp;</th><th class="col col-orange">Tin Can</th><th class="col col-gold">MyPhone by Ooma</th><th class="col col-teal">Build it yourself</th></tr>
+      </thead>
+      <tbody>
       <tr><td>Screen on the phone</td><td class="val">No</td><td class="val">No</td><td class="val">Depends on phone (Cortelco 2500: none)</td></tr>
       <tr><td>Dialing input</td><td class="val">Keypad + 10 speed-dial slots</td><td class="val">Standard keypad</td><td class="val">Standard keypad (varies by phone)</td></tr>
       <tr><td>Gets a real phone number</td><td class="val">Yes, even on the free tier†</td><td class="val">Yes</td><td class="val">Yes</td></tr>
@@ -122,6 +139,7 @@
       <tr><td>Call log for parents</td><td class="val">Yes, in-app</td><td class="val">Yes, online portal</td><td class="val">Not built in</td></tr>
       <tr><td>911</td><td class="val">Yes, address-based, toggleable</td><td class="val">Yes, address-based + text/email alerts</td><td class="val">Yes, address-based (Ooma standard)</td></tr>
       <tr><td>Contract required</td><td class="val">No</td><td class="val">No</td><td class="val">No</td></tr>
+      </tbody>
     </table>
     <div class="foot-notes">
       † Per hands-on reviews, a Tin Can is assigned a traditional-looking number at setup, before any subscription is active — see Section 4.<br>
@@ -130,7 +148,7 @@
     </div>
   </section>
 
-  <section style="break-before: page;">
+  <section>
     <div class="sec-head"><span class="sec-num">3</span><h2>The Cost Curve</h2></div>
     <div class="sec-rule"></div>
     <p class="takeaway">Tin Can is cheapest through month 27. Build-it-yourself is cheapest after.</p>
